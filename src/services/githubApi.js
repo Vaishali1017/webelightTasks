@@ -1,5 +1,4 @@
 const GITHUB_API_URL = 'https://api.github.com';
-
 export const fetchReposFromAPI = async (page) => {
     const response = await fetch(`${GITHUB_API_URL}/search/repositories?q=created:>2017-10-22&sort=stars&order=desc&page=${page}`);
     if (!response.ok) {
