@@ -7,7 +7,7 @@ const RepoList = ({ repos }) => {
     return (
         <Grid container spacing={2}>
             {repos.map(repo => (
-                <Grid item key={repo.id} xs={12} sm={6} md={4}>
+                <Grid item key={repo.id} xs={12} sm={12} md={12}>
                     <RepoListItem repo={repo} />
                 </Grid>
             ))}

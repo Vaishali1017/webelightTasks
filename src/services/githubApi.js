@@ -1,10 +1,7 @@
-// githubAPI.js
 const GITHUB_API_URL = 'https://api.github.com';
 
-export const fetchReposFromAPI = async () => {
-    console.log("hiii")
-    const response = await fetch(`${GITHUB_API_URL}/search/repositories?q=created:>2022-02-01&sort=stars&order=desc`);
-    console.log("3",response)
+export const fetchReposFromAPI = async (page) => {
+    const response = await fetch(`${GITHUB_API_URL}/search/repositories?q=created:>2017-10-22&sort=stars&order=desc&page=${page}`);
     if (!response.ok) {
         throw new Error('Failed to fetch repositories');
     }
@@ -15,6 +12,7 @@ export const fetchReposFromAPI = async () => {
         description: repo.description,
         stars: repo.stargazers_count,
         issues: repo.open_issues_count,
+        last_pushed: repo.pushed_at,
         owner: {
             username: repo.owner.login,
             avatar: repo.owner.avatar_url,
